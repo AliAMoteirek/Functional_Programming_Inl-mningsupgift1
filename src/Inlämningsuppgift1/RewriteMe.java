@@ -71,14 +71,14 @@ public class RewriteMe {
     public boolean isThisAnAnswerOption(String answerCandidate) {
         return questions.stream()
                 .flatMap(l -> l.answers.stream())
-                .anyMatch(s -> s.equals(answerCandidate));
+                .anyMatch(s -> s.equalsIgnoreCase(answerCandidate));
     }
 
     //Hur ofta förekommer ett visst svarsalternativ, givet som inparameter, i databasen
     public int getAnswerCandidateFrequncy(String answerCandidate) {
         return questions.stream()
                 .flatMap(l -> l.answers.stream())
-                .filter(s -> s.equals(answerCandidate))
+                .filter(s -> s.equalsIgnoreCase(answerCandidate))
                 .collect(Collectors.toList())
                 .size();
 
